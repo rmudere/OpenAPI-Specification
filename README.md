@@ -59,3 +59,21 @@ Not all feedback can be accommodated and there may be solid arguments for or aga
 See: [License (Apache-2.0)](https://github.com/OAI/OpenAPI-Specification/blob/master/LICENSE)
 
 ![Analytics](https://ga-beacon.appspot.com/UA-831873-42/readme.md?pixel)
+
+
+Notes:
+Generate Client with openApi
+https://www.baeldung.com/spring-boot-rest-client-swagger-codegen
+
+java -jar openapi-generator-cli.jar generate \
+  -i http://petstore.swagger.io/v2/swagger.json \
+  --api-package com.baeldung.petstore.client.api \
+  --model-package com.baeldung.petstore.client.model \
+  --invoker-package com.baeldung.petstore.client.invoker \
+  --group-id com.baeldung \
+  --artifact-id spring-openapi-generator-api-client \
+  --artifact-version 0.0.1-SNAPSHOT \
+  -g java \
+  -p java8=true \
+  --library resttemplate \
+  -o spring-openapi-generator-api-client
