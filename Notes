@@ -1,0 +1,16 @@
+If parameters are supplied as headers.
+
+@Bean
+    public OpenApiCustomiser globalHeaderOpenApiCustomiser() {
+        return openApi -> openApi.getPaths()
+                .values()
+                .stream()
+                .flatMap(pathItem -> pathItem.readOperations().stream())
+                .forEach(this::addHeaders);
+    }
+
+    private void addHeaders(Operation operation) {
+        operation.addParametersItem(new HeaderParameter().required(true).name("sessionId").description("Session Identifier").schema(new StringSchema()));
+        operation.addParametersItem(new HeaderParameter().required(true).name("requestId").description("Request Identifier").schema(new StringSchema()));
+        operation.addParametersItem(new HeaderParameter().required(true).name("employeeId").description("Employee Identifier").schema(new StringSchema()));
+    }
